@@ -4,10 +4,13 @@ const mongoose = require('mongoose')
 
 const CommentSchema = new mongoose.Schema({
     PostedBy:{
-        type:String
+        type:String,
+        
     },
     Comment:{
-        type:String
+        type:String,
+        maxlength: [100, 'provide less than 100 charaters ']
+        
     }
 })
 
