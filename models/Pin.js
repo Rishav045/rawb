@@ -1,0 +1,1 @@
+// Build schema for pin details 

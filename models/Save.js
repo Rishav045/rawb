@@ -1,0 +1,1 @@
+// Create schema about Save who have saved the particular post
