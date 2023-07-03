@@ -22,7 +22,18 @@ const UserSchema =new mongoose.Schema({
         type:String,
         minlength:5,
         required:[true,"Password cannot be empty"]
-    }
+    },
+    created:[
+        {
+            type:String
+        }
+    ],
+    saved:[
+        {
+            type:String
+        }
+    ]
+
 })
 UserSchema.pre('save',async function(){
     const salt = await bcrypt.genSalt(10)
