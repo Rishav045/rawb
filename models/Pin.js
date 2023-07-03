@@ -26,7 +26,7 @@ const PinSchema = new mongoose.Schema({
     PostedBy:{
         type:String
     },
-    save: [{
+    savedBy: [{
         type:String,
         
     }],
