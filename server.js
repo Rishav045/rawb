@@ -2,7 +2,9 @@ const express = require('express')
 const cloudinary = require('cloudinary').v2
 const fileUpload = require('express-fileupload')
 const imageUpload = require('./Routes/PinUpload')
- require('dotenv').config()
+const authRoute = require('./Routes/auth')
+const connectDB = require('./Db/Connect')
+require('dotenv').config()
 require('express-async-errors')
 
 const app = express();
@@ -24,6 +26,16 @@ app.get('/home',(req,res)=>{
     res.send("This is the home page")
 })
 app.use('/uploads',imageUpload)
-app.listen(3000,()=>{
-    console.log("Server is listening on port 3000");
-})
+app.use('/auth',authRoute);
+const start = async()=>{
+    try{
+        await connectDB(process.env.MONGO_URI)
+        app.listen(3000,()=>{
+            console.log("Server is listening on the port 3000")
+        })
+
+    }catch(error){
+        console.log(error)
+    }
+}
+start()
