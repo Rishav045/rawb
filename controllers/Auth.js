@@ -3,16 +3,18 @@ const User = require('../models/User')
 
 const login = async(req,res)=>{
     const {email,password} = req.body;
+    console.log(email)
+    console.log(password)
     if(!email||!password)
     {
-        res.send("Please provide both email and password")
+        console.log("Please provide both email and password")
     }
     const user = await User.findOne({email});
     console.log(password)
     if(!user)
     {
         
-        res.send("Wrong Credentials")
+        console.log("Wrong Credentials")
         
     }
     console.log(user)
@@ -20,7 +22,7 @@ const login = async(req,res)=>{
     if(!isAuth)
     {
         console.log("here")
-        res.send("Wrong Credentials")
+        console.log("Wrong Credentials")
         
     }
 

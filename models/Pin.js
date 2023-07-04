@@ -3,27 +3,28 @@
 const mongoose = require('mongoose')
 
 const PinSchema = new mongoose.Schema({
-    Title:{
+    title:{
         type:String,
         required : [true,'must provide title']
     },
-    Abouts:{
+    abouts:{
         type:String,
         required : [true, 'must provide abouts']
     },
     category:{
-        type:String
+        type:String,
+        default:"NONE",
 
     },
-    ImageUrl: {
+    imageUrl: {
         type:String,
         required : [true, 'must provide ImageUrl']
     },
-    UserId: {
+    userId: {
         type:String
         // -we will give them
     },
-    PostedBy:{
+    postedBy:{
         type:String
     },
     savedBy: [{
