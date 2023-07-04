@@ -4,6 +4,7 @@ const fileUpload = require('express-fileupload')
 const imageUpload = require('./Routes/PinUpload')
 const authRoute = require('./Routes/auth')
 const connectDB = require('./Db/Connect')
+const cors = require('cors')
 require('dotenv').config()
 require('express-async-errors')
 
@@ -18,6 +19,7 @@ cloudinary.config(
 
 app.use(express.static('public'))
 app.use(express.json())
+app.use(cors())
 app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/'}))
 app.get('/',(req,res)=>{
     res.send("Hello there")
