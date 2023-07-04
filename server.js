@@ -4,6 +4,8 @@ const fileUpload = require('express-fileupload')
 const imageUpload = require('./Routes/PinUpload')
 const authRoute = require('./Routes/auth')
 const connectDB = require('./Db/Connect')
+const pinRoute = require('./Routes/Pin')
+const cors = require('cors')
 require('dotenv').config()
 require('express-async-errors')
 
@@ -17,6 +19,7 @@ cloudinary.config(
 )
 
 app.use(express.static('public'))
+app.use(cors());
 app.use(express.json())
 app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/'}))
 app.get('/',(req,res)=>{
@@ -27,6 +30,7 @@ app.get('/home',(req,res)=>{
 })
 app.use('/uploads',imageUpload)
 app.use('/auth',authRoute);
+app.use('/pin',pinRoute);
 const start = async()=>{
     try{
         await connectDB(process.env.MONGO_URI)
