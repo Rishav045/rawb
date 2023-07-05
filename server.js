@@ -4,10 +4,9 @@ const fileUpload = require('express-fileupload')
 const imageUpload = require('./Routes/PinUpload')
 const authRoute = require('./Routes/auth')
 const connectDB = require('./Db/Connect')
-<<<<<<< HEAD
+
 const pinRoute = require('./Routes/Pin')
-=======
->>>>>>> 5a5e4125db3d9b656d8a14d0a48a9b06b561ff48
+
 const cors = require('cors')
 require('dotenv').config()
 require('express-async-errors')
